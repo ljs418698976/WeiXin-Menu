@@ -2,37 +2,43 @@
 
 require 'WeiXin_Menu.php';
 
-$dd = '{
-	"button":[{	
-		"type":"click",
-		"name":"微生活",
-		"key":"V1001_TODAY_MUSIC"
-	},
-	{
-		"type":"click",
-		"name":"微旅游",
-		"key":"V1001_TODAY_SINGER"
-	},
-	{
-		"name":"我的捷程",
-		"sub_button":[{
-			"type":"click",
-			"name":"我的订单",
-			"key":"V1001_HELLO_WORLD"
-		},
-		{
-			"type":"click",
-			"name":"收藏夹",
-			"key":"V1001_HELLO_WORLD"
-		},
-		{
-			"type":"click",
-			"name":"个人资料",
-			"key":"V1001_GOOD"
-		}]
-	}]
-}';
+$menu = array(
+	"button" => array(
+		array(
+			"type" => "click",
+			"name" => urlencode("微生活"),
+			"key" => "KEY_1"
+		),
+		array(
+			"type" => "click",
+			"name" => urlencode("微旅游"),
+			"key" => "KEY_2"
+		),
+		array(
+			"name" => urlencode("我的捷程"),
+			"sub_button" => array(
+				array(
+					"type" => "click",
+					"name" => urlencode("我的订单"),
+					"key" => "KEY_3"
+				),
+				array(
+					"type" => "click",
+					"name" => urlencode("收藏夹"),
+					"key" => "KEY_4"
+				),
+				array(
+					"type" => "click",
+					"name" => urlencode("个人资料"),
+					"key" => "KEY_5"
+				)
+			)
+		)
+	)
+);
 
-$aa = new WeiXin_Menu($dd);
+
+$menu = urldecode(json_encode($menu));
+$aa = new WeiXin_Menu($menu);
 echo "ok";
 ?>
